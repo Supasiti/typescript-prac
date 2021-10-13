@@ -1,49 +1,46 @@
-
-const random = (max : number) : number => {
-  const result = Math.floor(Math.random() * max);
-  return result
+interface Partition {
+  lower: number[];
+  upper: number[];
 }
+
+const random = (max: number): number => {
+  const result = Math.floor(Math.random() * max);
+  return result;
+};
 
 const doPartitioning = (
-  acc : { lower: number[], upper: number[] },
+  acc: Partition,
   value: number,
-  pivot: number 
-) : { 
-  lower: number[], 
-  upper: number[] 
-} => {
+  pivot: number,
+): Partition => {
   if (value > pivot) {
-    const newArr = [...acc.upper, value]
-    const result = {...acc, upper: newArr }
-    return result
+    const newArr = [...acc.upper, value];
+    const result = { ...acc, upper: newArr };
+    return result;
   }
   if (value < pivot) {
-    const newArr = [...acc.lower, value]
-    const result = {...acc, lower: newArr }
-    return result
+    const newArr = [...acc.lower, value];
+    const result = { ...acc, lower: newArr };
+    return result;
   }
-  return acc
-}
+  return acc;
+};
 
-export const partition = (array: number[], pivot: number)
-: { lower: number[], upper: number[] } => {
-  const emptyArr: number[] = []   
+export const partition = (array: number[], pivot: number): Partition => {
+  const emptyArr: number[] = [];
   const result = array.reduce(
-    (acc, value) => doPartitioning(acc, value, pivot), 
-    { lower: emptyArr, upper: emptyArr }
-  )
-  return result
-}
+    (acc, value) => doPartitioning(acc, value, pivot),
+    { lower: emptyArr, upper: emptyArr },
+  );
+  return result;
+};
 
 export const quickSort = (array: number[]): number[] => {
-  if (array.length === 1 || array.length === 0) return array
+  if (array.length === 1 || array.length === 0) return array;
 
   const emptyArr = [] as number[];
-  const pivot = array[random(array.length)]
-  const { lower, upper} = partition(array, pivot)
-  const result = emptyArr.concat(quickSort(lower), [pivot], quickSort(upper))
-
-  return result
-}
-
-  
+  const pivot = array[random(array.length)];
+  const { lower, upper } = partition(array, pivot);
+  const result = emptyArr.concat(quickSort(lower), [pivot], quickSort(upper));
+  return result;
+};
