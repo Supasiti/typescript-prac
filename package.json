@@ -1,0 +1,24 @@
+{
+  "name": "typescript-prac",
+  "version": "1.0.0",
+  "description": "learning typescript",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^4.4.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc:w": "tsc -w",
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Supasiti/typescript-prac.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Supasiti/typescript-prac/issues"
+  },
+  "homepage": "https://github.com/Supasiti/typescript-prac#readme"
+}
